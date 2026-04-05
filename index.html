@@ -16,26 +16,24 @@
     </div>
     <script>
         const divumlayot = document.getElementById("Principal")
-        const materias = ["front","ciencia","daniela","outros"]
-        const titulos = ["Front-End","Ciência da Computação","Materias da Daniela","Outras materias"]
+        const subreps = ["Front-End-2025","Slides-Diversos"]
+        const titulos = ["Front-End","Apresentações"]
         const descricoes = [
             "Materia onde supostamente o Grande Fabio Dias ensina HTML e Java Script. Aqui está todos os Layouts que fiz durante tais aulas",
-            "Materia onde supostamente o Grande Fabio Dias ensina Linux, Arduino, Sistemas Operacionais, Rede de computadores e outras coisas. Aqui está todos os slides que ele pedio como avaliação",
-            "Sem comentarios ainda! :(",
-            "Algumas coisas que fiz mas que seriam muito poucas pra dividir por materia",
+            "Diversos slides que fui fazendo durante os anos para ganhar nota em alguma materia"
         ]
 
-        for (let i = 0; i < materias.length; i++) {
-            const materia = materias[i]
+        for (let i = 0; i < subreps.length; i++) {
+            const repo = subreps[i]
             const descricao = descricoes[i]
             const titulo = titulos[i]
             
             divumlayot.innerHTML += `
-            <div id="${materia}" class="materia">
+            <div id="${repo}" class="materia">
                 <h3>${titulo}</h3>
-                <a href="./${materia}/index.html">
-                    <div id="${materia}" class="conteudo">
-                        <img src="./${materia}/thumb.png" alt="">
+                <a href="https://gyorge-escola.github.io/${repo}/">
+                    <div id="${repo}" class="conteudo">
+                        <img src="./${repo}/thumb.png" alt="">
                         <p>${descricao}</p>
                     </div>
                 </a>
