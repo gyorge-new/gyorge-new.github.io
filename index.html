@@ -12,28 +12,28 @@
 </head>
 <body>
     <header>Atividades escolares</header>
-    <div id="Principal">
+    <div id="grid">
     </div>
     <script>
-        const divumlayot = document.getElementById("Principal")
         const subreps = ["Front-End-2025","Slides-Diversos"]
         const titulos = ["Front-End","Apresentações"]
         const descricoes = [
             "Materia onde supostamente o Grande Fabio Dias ensina HTML e Java Script. Aqui está todos os Layouts que fiz durante tais aulas",
             "Diversos slides que fui fazendo durante os anos para ganhar nota em alguma materia"
         ]
-
+        
+        const divumlayot = document.getElementById("grid")
         for (let i = 0; i < subreps.length; i++) {
             const repo = subreps[i]
             const descricao = descricoes[i]
             const titulo = titulos[i]
             
             divumlayot.innerHTML += `
-            <div id="${repo}" class="materia">
+            <div id="${repo}" class="bloco">
                 <h3>${titulo}</h3>
                 <a href="https://gyorge-escola.github.io/${repo}/">
-                    <div id="${repo}" class="conteudo">
-                        <img src="./${repo}/thumb.png" alt="">
+                    <div id="${repo}" class="subloco">
+                        <img src="https://gyorge-escola.github.io/${repo}/thumb.png" alt="">
                         <p>${descricao}</p>
                     </div>
                 </a>
