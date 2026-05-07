@@ -11,36 +11,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Atma:wght@300;400;500;600;700&family=Delius&family=Knewave&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header>Atividades escolares</header>
-    <div id="grid">
-    </div>
-    <script>
-        const subreps = ["Front-End-2025","Slides-Diversos","Slides-ocultos"]
-        const titulos = ["Front-End","Apresentações","Slides Ocultos"]
-        const descricoes = [
-            "Materia onde supostamente o Grande Fabio Dias ensina HTML e Java Script. Aqui está todos os Layouts que fiz durante tais aulas",
-            "Diversos slides que fui fazendo durante os anos para ganhar nota em alguma materia",
-            "Slides que me avisaram que eu tinha, porque eu não lembrava"
-        ]
-        
-        const divumlayot = document.getElementById("grid")
-        for (let i = 0; i < subreps.length; i++) {
-            const repo = subreps[i]
-            const descricao = descricoes[i]
-            const titulo = titulos[i]
-            
-            divumlayot.innerHTML += `
-            <div id="${repo}" class="bloco">
-                <h3>${titulo}</h3>
-                <a href="https://gyorge-escola.github.io/${repo}/">
-                    <div id="${repo}" class="subloco">
-                        <img src="https://gyorge-escola.github.io/${repo}/thumb.png" alt="">
-                        <p>${descricao}</p>
-                    </div>
-                </a>
+    <div id="grid"></div>
+
+    <!-- Iframe -->
+     <iframe id="iframe" src="" frameborder="0"></iframe>
+
+    <!-- Player de músicas -->
+    <audio id="bgMusic">
+        <source id="musicSource" src="musicas/Fighters_Game.mp3" type="audio/mpeg">
+    </audio>
+    <div id="audio-player-container">
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div class="controls-wrapper">
+            <p>Músicas</p>
+            <div class="playback-controls">
+                <button onclick="togglePlay()" id="playBtn" title="Play/Pause">▶</button>
+                <button onclick="toggleMute()" id="muteBtn" title="Mudar Volume">🔊</button>
             </div>
-            `
-        }
-    </script>
+            <i id="musicName">Fighters Game</i>
+        </div>
+        
+    </div>
+
+    <!-- Scripts -->
+    <script src="render.js"></script>
+    <script src="player.js"></script>
 </body>
 </html>
