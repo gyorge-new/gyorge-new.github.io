@@ -28,12 +28,12 @@ for (let i = 0; i < subreps.length; i++) {
     divumlayot.innerHTML += `
     <div id="${repo}" class="bloco">
         <h3>${titulo}</h3>
-        <a href="${repo}/">
+        <button onclick="toSite('${repo}/')">
             <div id="${repo}" class="subloco">
                 <img src="${repo}/thumb.png" alt="">
                 <p>${descricao}</p>
             </div>
-        </a>
+        </button>
     </div>
     `
 }

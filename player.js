@@ -4,7 +4,9 @@ const muteBtn = document.getElementById("muteBtn");
 const progressBar = document.getElementById("progress-bar");
 const progressContainer = document.getElementById("progress-container");
 const source = document.getElementById("musicSource");
-const musicname = document.getElementById("musicName")
+const musicname = document.getElementById("musicName");
+const controles = document.getElementById("controls-wrapper");
+const botaoocultar = document.getElementById("ocultar-audio");
 
 const minhaPlaylist = [
     "musicas/Ethereal Night.mp3",
@@ -15,10 +17,23 @@ const minhaPlaylist = [
     "musicas/Voyager X.mp3"
 ];
 
-// Variável para guardar qual música está tocando agora
-let musicaAtualIndex = 2;
+function esconderBarra() {
+    let displayC = controles.style
+    let displayP = progressContainer.style
+    if  (displayC.display == 'none') {
+        displayC.display = 'grid'
+        displayP.display = 'flex'
+        botaoocultar.innerText = "⤵"
+    } else {
+        displayC.display = "none"
+        displayP.display = "none"
+        botaoocultar.innerText = "⤴"
+    }
+}
 
 // Função para tocar uma música aleatória
+// Variável para guardar qual música está tocando agora
+let musicaAtualIndex = 2;
 function tocarAleatorio() {
     let novoIndice;
     
@@ -31,11 +46,8 @@ function tocarAleatorio() {
     const proximaMusica = minhaPlaylist[musicaAtualIndex];
     musicname.innerText = proximaMusica.replace(".mp3","").replace("_"," ").replace("musicas/","")
     
-    // Troca a música
     music.src = proximaMusica;
     music.load();
-
-    // Tenta dar o play
     music.play()
         .then(() => {
             playBtn.innerHTML = "⏸";

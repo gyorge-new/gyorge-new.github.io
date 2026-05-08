@@ -6,6 +6,7 @@
     <title>Aulas do Fabio Dias</title>
     <link rel="shortcut icon" href="./imgs/logo.png">
     <link rel="stylesheet" href="style.css">
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Atma:wght@300;400;500;600;700&family=Delius&family=Knewave&display=swap" rel="stylesheet">
@@ -23,12 +24,13 @@
         <source id="musicSource" src="musicas/Fighters_Game.mp3" type="audio/mpeg">
     </audio>
     <div id="audio-player-container">
+        <button id="ocultar-audio" onclick="esconderBarra()">⤵</button>
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
-        <div class="controls-wrapper">
+        <div id="controls-wrapper">
             <p>Músicas</p>
-            <div class="playback-controls">
+            <div id="playback-controls">
                 <button onclick="togglePlay()" id="playBtn" title="Play/Pause">▶</button>
                 <button onclick="toggleMute()" id="muteBtn" title="Mudar Volume">🔊</button>
             </div>
@@ -37,8 +39,10 @@
         
     </div>
 
+    
     <!-- Scripts -->
     <script src="render.js"></script>
     <script src="player.js"></script>
+    <script src="goto.js"></script>
 </body>
 </html>
