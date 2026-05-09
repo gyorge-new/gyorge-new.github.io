@@ -6,6 +6,9 @@
     --caixas: rgba(78, 72, 155, 0.7);
     --titulo: rgb(123, 140, 236);
     --background: rgb(62, 52, 153);
+    --playerbackground: rgb(23, 3, 92, 0.5);
+    --playerprogress: rgb(62, 52, 153);
+    --playertext: white;
 }
 
 /* Geral */
@@ -112,33 +115,32 @@ img{
     left: 0;
     width: 100%;
     z-index: 10;
-    color: var(white);
+    color: var(--playertext);
 }
 
 #ocultar-audio{
     border-bottom: none;
-    background: rgb(from var(--header) r g b / 0.9);
+    background: var(--playerbackground);
     font-size: x-large;
     border-radius: 10px 10px 0 0;
-    transition: all 0.2s ease-in-out;
+    color: var(--playertext);
 }
 
 #ocultar-audio:hover{
-    background-color: var(--texto);
-    color: var(--header);
+    background-color: var(--playerprogress);
 }
 
 #progress-container {
     width: 100%;
     height: 8px;
-    background: rgb(from var(--header) r g b / 0.9);
+    background: var(--playerbackground);
     cursor: pointer;
 }
 
 #progress-bar {
     width: 0%;
     height: 100%;
-    background: var(--titulo);
+    background: var(--playerprogress);
     transition: width 0.1s linear;
 }
 
@@ -146,14 +148,19 @@ img{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
-    padding: 15px 0;
-    background: rgb(from var(--header) r g b / 0.9);
+    padding: 0 0;
+    background: var(--playerbackground);
+}
+
+#playback-controls{
+    display: flex;
+    place-items: center;
 }
 
 #playback-controls button {
     background: none;
     border: none;
-    color: var(--texto);
+    color: var(--playertext);
     font-size: 20px;
     margin: 0 10px;
     width: 45px;
@@ -161,15 +168,13 @@ img{
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    place-items: center;
 }
 
 #playback-controls button:hover {
-    background: var(--texto);
-    color: var(--titulo);
-    transform: scale(1.1);
+    background: var(--playerprogress);
+    color: var(--playerbackground);
 }
 
 /* Iframe */
