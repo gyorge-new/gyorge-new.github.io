@@ -10,7 +10,7 @@ function toSite(url) {
 
 function deSite() {
     iframe.style.zIndex = -1
-    iframe.src = ""
+    iframe.src = null
     document.getElementById("novocss").remove()
 }
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 iframe.onload = function() {
-    if (iframe.src == "") {
+    if (!iframe.src) {
         iframe.style.zIndex = -1
         document.getElementById("novocss").remove()
     } else {
