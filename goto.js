@@ -3,15 +3,11 @@ const head = document.querySelector('head')
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 function toSite(url) {
-    iframe.style.zIndex = 8
     iframe.src = url
-    head.innerHTML += `<link id="novocss" rel="stylesheet" href="${url}/style.css">`
 }
 
 function deSite() {
-    iframe.style.zIndex = -1
-    iframe.src = null
-    document.getElementById("novocss").remove()
+    iframe.src = "about:blank"
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,12 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-iframe.onload = function() {
-    if (!iframe.src) {
+iframe.addEventListener("load", function() {
+    const urlAtual = iframe.contentWindow.location.href
+    console.log("A URL do iframe mudou para: " + urlAtual)
+    if (urlAtual == "about:blank") {
         iframe.style.zIndex = -1
         document.getElementById("novocss").remove()
+        console.log("limpando pagina")
     } else {
         iframe.style.zIndex = 8
-        head.innerHTML += `<link id="novocss" rel="stylesheet" href="${iframe.src}/style.css">`
+        head.innerHTML += `<link id="novocss" rel="stylesheet" href="${urlAtual}/style.css">`
+        console.log("prenchendo pagina")
     }
-};
+});
