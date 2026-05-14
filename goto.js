@@ -18,9 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     deSite()
 });
 
-const meuIframe = document.getElementById('id-do-iframe');
 
-meuIframe.onload = function() {
+iframe.onload = function() {
     try {
         // Isso só funciona se for o MESMO domínio
         const urlAtual = meuIframe.contentWindow.location.href;
