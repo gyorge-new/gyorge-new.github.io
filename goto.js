@@ -20,12 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 iframe.onload = function() {
-    try {
-        // Isso só funciona se for o MESMO domínio
-        const urlAtual = meuIframe.contentWindow.location.href;
-        console.log("Iframe carregou a URL: " + urlAtual);
-    } catch (e) {
-        // Se cair aqui, é porque o site é de outro domínio (segurança)
-        console.log("O iframe navegou, mas não posso ler a URL por segurança.");
+    if (iframe.src == "") {
+        deSite()
+    } else {
+        toSite(iframe.src)
     }
 };
