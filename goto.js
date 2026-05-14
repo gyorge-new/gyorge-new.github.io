@@ -25,6 +25,6 @@ iframe.onload = function() {
         document.getElementById("novocss").remove()
     } else {
         iframe.style.zIndex = 8
-        head.innerHTML += `<link id="novocss" rel="stylesheet" href="${url}/style.css">`
+        head.innerHTML += `<link id="novocss" rel="stylesheet" href="${iframe.src}/style.css">`
     }
 };
