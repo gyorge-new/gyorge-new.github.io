@@ -1,8 +1,8 @@
 // Link do repositorio
 const subreps = [
-    "https://gyorge-escola.github.io/Front-End-2025",
-    "https://gyorge-escola.github.io/Slides-Diversos",
-    "https://gyorge-escola.github.io/Slides-ocultos"
+    "https://gyorge-new.github.io/Front-End-2025",
+    "https://gyorge-new.github.io/Slides-Diversos",
+    "https://gyorge-new.github.io/Slides-Ocultos"
 ]
 
 // Titilo da caixa
