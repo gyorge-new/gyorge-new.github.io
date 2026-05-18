@@ -19,6 +19,7 @@
     background-attachment: fixed;
     min-height: 100dvh;
     height: auto;
+    scroll-snap-align: start;
 }
 
 .titulo.Atividades{

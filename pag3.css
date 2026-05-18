@@ -1,0 +1,30 @@
+/* Cores da página 2 */
+
+:root {
+    --p3header: #9C660D;
+    --p3texto: #774d09;
+    --p3titulo: #9C660D;
+    --p3background: #9C660D;
+}
+
+/* Geral */
+
+.pag3{
+    display: flex;
+    place-items: center;
+    min-height: 100dvh;
+    height: auto;
+    background-color: var(--p3background);
+    background-image: linear-gradient(color-mix(in srgb, var(--p3background) 50%, transparent)), url(./imgs/pag3.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--p3texto);
+    scroll-snap-align: start;
+}
+
+h1{
+    text-align: center;
+    width: 100%;
+}
