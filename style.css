@@ -1,13 +1,8 @@
-/* Definição */
+/* Cores universais */
 
 :root {
-    --header: rgb(23, 3, 92, 0.5);
-    --texto: rgb(255, 255, 255);
-    --caixas: rgba(78, 72, 155, 0.7);
-    --titulo: rgb(123, 140, 236);
-    --background: rgb(62, 52, 153);
-    --playerbackground: rgb(23, 3, 92, 0.5);
-    --playerprogress: rgb(62, 52, 153);
+    --playerbackground: rgba(95, 95, 95, 0.397);
+    --playerprogress: rgb(150, 150, 150);
     --playertext: white;
 }
 
@@ -15,99 +10,20 @@
 
 *{
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 body{
     padding: 0;
     margin: 0;
-    color: var(--texto);
-    background-color: var(--background);
-    background-image: url(./fundo.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     font-family: "Bricolage Grotesque", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
 
-header{
-    text-align: center;
-    font-weight: bold;
-    background-color: var(--header);
-    color: var(--titulo);
-    padding: 2%;
-    font-size: 190%;
-}
 
-button{
-    background-color: rgb(0, 0, 0, 0);
-    border: none;
-    color: var(--texto);
-    font-size: medium;
-}
-
-#home{
-    font-size: 60%;
-    margin-left: 30%;
-}
-
-/* Grid principal */
-
-#grid{
-    margin: 2%;
-    gap: 3%;
-    display: grid;
-    place-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    box-sizing: border-box;
-}
-
-.bloco{
-    display: grid;
-    grid-template-columns: 1fr;
-    text-align: center;
-    aspect-ratio: 1/1;
-    width: 100%;
-}
-
-.subloco{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5%;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--caixas);
-    font-size: 100%;
-    border-radius: 15px;
-}
-
-.subloco:hover{
-    margin: -5%;
-    width: 110%;
-    font-size: 110%;
-    color: var(--caixas);
-    background-color: var(--texto);
-}
-
-.descri{
-    width: 100%;
-    text-align: center;
-    aspect-ratio: 5/1;
-}
-
-img{
-    width: 80%;
-    aspect-ratio: 16/9;
-    object-fit: contain;
-}
-
-/* Player de musica principal */
+/* Player de musica flutuante */
 
 #audio-player-container {
     position: fixed;
@@ -177,7 +93,12 @@ img{
     color: var(--playerbackground);
 }
 
-/* Iframe */
+.sombutton{
+    padding-left: 15%;
+}
+
+/* Iframe para sub paginas */
+
 #iframe{
     position: fixed;
     top: 0;

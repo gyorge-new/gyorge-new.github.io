@@ -1,0 +1,99 @@
+/* Cores da página 1 */
+
+:root {
+    --p1header: #61139c7a;
+    --p1texto: rgb(255, 255, 255);
+    --p1caixas: #632f8aab;
+    --p1titulo: #744b94bb;
+    --p1background: #61139c2d;
+}
+
+/* Geral */
+
+.pag1{
+    background-color: var(--p1background);
+    background-image: linear-gradient(var(--p1background)), url(./imgs/pag1.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100dvh;
+    height: auto;
+}
+
+.titulo.Atividades{
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--p1header);
+    color: var(--p1titulo);
+    padding: 2%;
+    font-size: 190%;
+}
+
+button{
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+    color: var(--p1texto);
+    font-size: medium;
+}
+
+#home{
+    font-size: 60%;
+    margin-left: 30%;
+}
+
+/* Grid principal */
+
+#grid{
+    padding: 2%;
+    column-gap: 3%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    box-sizing: border-box;
+    height: auto;
+    padding-bottom: 20px;
+}
+
+.bloco{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+    color: var(--p1texto);
+}
+
+.subloco{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+    background-color: var(--p1caixas);
+    font-size: 100%;
+    border-radius: 15px;
+}
+
+.subloco:hover{
+    margin: -5%;
+    width: 110%;
+    font-size: 110%;
+    color: var(--p1caixas);
+    background-color: var(--p1texto);
+}
+
+.descri{
+    width: 100%;
+    text-align: center;
+    aspect-ratio: 5/1;
+}
+
+img{
+    width: 80%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
