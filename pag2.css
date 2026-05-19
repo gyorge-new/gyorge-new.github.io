@@ -10,7 +10,6 @@
 /* Geral */
 
 .pag2{
-    place-items: center;
     min-height: 100dvh;
     height: auto;
     background-color: var(--p2background);
@@ -26,6 +25,7 @@
 .titulo.Musicas{
     text-align: center;
     font-weight: bold;
+    width: 100%;
     background-color: var(--p2header);
     color: var(--p2titulo);
     padding: 2%;
