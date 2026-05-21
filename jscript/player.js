@@ -40,11 +40,10 @@ const playlists = {
         "musicas/Sweden.mp3": "Youtube: MrSuicideSheep",
     },
     "Meme shit": {
-        "musicas/Fabio e seus carros.mp3": "Origem? Odio ao Fabio",
+        "musicas/Fabio e seus carros.mp3": "Origem? <s>Odio ao Fabio</s> Er... Inspiração",
         "musicas/Fabio envenenado.mp3": "Origem? PH",
         "musicas/Fabio e seus carros - alpha.mp3": "Origem? Ideia maluca",
-        "musicas/A melancolia de Fabio 1.0.mp3": "Origem? Não aguento ele",
-        "musicas/A melancolia de Fabio 2.0.mp3": "Origem? Não aguento ele p.2",
+        "musicas/Temporariamente fora do ar": "Trabalhando em melhorias",
     },
     "Games": {
         "musicas/SMW-Koopa Castle.mp3": "Youtube: Magnus619666",
