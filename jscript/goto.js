@@ -5,6 +5,7 @@
 const iframe = document.getElementById('iframe')
 const head = document.querySelector('head')
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const scrollHorizontal = document.querySelector("#scroll-arrows")
 
 function toSite(url) {
     iframe.src = url
@@ -26,9 +27,11 @@ iframe.addEventListener("load", function() {
         iframe.style.zIndex = -1
         document.getElementById("novocss").remove()
         console.log("limpando pagina")
+        scrollHorizontal.style.display = "flex"
     } else {
         iframe.style.zIndex = 8
         head.innerHTML += `<link id="novocss" rel="stylesheet" href="${urlAtual}/style.css">`
         console.log("prenchendo pagina")
+        scrollHorizontal.style.display = "none"
     }
 });
