@@ -1,3 +1,7 @@
+/* 
+---------------- RENDERIZAÇÃO DOS BLOCOS DE ATIVIDADES ----------------
+*/
+
 // Link do repositorio
 const subreps = [
     "https://gyorge-new.github.io/Front-End-2025",

@@ -7,9 +7,9 @@
     <!-- Style -->
     <link rel="shortcut icon" href="./imgs/logo.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="pag1.css">
-    <link rel="stylesheet" href="pag2.css">
-    <link rel="stylesheet" href="pag3.css">
+    <link rel="stylesheet" href="style/pag1.css">
+    <link rel="stylesheet" href="style/pag2.css">
+    <link rel="stylesheet" href="style/pag3.css">
 
     <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,11 +41,17 @@
 
     <!-- Player de músicas -->
     <audio id="bgMusic">
-        <source id="musicSource" src="musicas/Fighters_Game.mp3" type="audio/mpeg">
+        <source id="musicSource" src="" type="audio/mpeg">
     </audio>
 
-    <div id="audio-player-container">
-        <button id="ocultar-audio" onclick="esconderBarra()">⤴</button>
+    <div id="gbar-container">
+        <div id="gbar">
+            <button id="ocultar-audio" onclick="esconderBarra()">⤴</button>
+            <div id="scroll-arrows">
+                <button id="left-arrow" class="arrow" onclick="scrollPagina(-window.innerWidth,document.getElementById('Paginas'))">←</button>
+                <button id="right-arrow" class="arrow" onclick="scrollPagina(window.innerWidth,document.getElementById('Paginas'))">→</button>
+            </div>         
+        </div>
         <div id="controles-play">
             <div id="progress-container">
                 <div id="progress-bar"></div>
@@ -64,8 +70,9 @@
 
     
     <!-- Scripts -->
-    <script src="render.js"></script>
-    <script src="player.js"></script>
-    <script src="goto.js"></script>
+     <script src="script.js"></script>
+    <script src="jscript/render.js"></script>
+    <script src="jscript/player.js"></script>
+    <script src="jscript/goto.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+/*
+---------------- GERENCIADOR DOS BLOCOS E IFRAMES ----------------
+*/
+
 const iframe = document.getElementById('iframe')
 const head = document.querySelector('head')
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));

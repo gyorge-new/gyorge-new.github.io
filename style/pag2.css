@@ -1,4 +1,6 @@
+/*********************/
 /* Cores da página 2 */
+/*********************/
 
 :root {
     --p2header: #1a6e3cc0;
@@ -7,19 +9,21 @@
     --p2background: #409462;
 }
 
+/*********/
 /* Geral */
+/*********/
 
 .pag2{
-    min-height: 100dvh;
-    height: auto;
     background-color: var(--p2background);
-    background-image: linear-gradient(color-mix(in srgb, var(--p2background) 80%, transparent)), url(./imgs/pag2.gif);
+    background-image: linear-gradient(color-mix(in srgb, var(--p2background) 80%, transparent)), url(../imgs/pag2.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: relative;
     color: var(--p2texto);
     scroll-snap-align: start;
+    width: 100dvw;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .titulo.Musicas{

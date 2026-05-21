@@ -1,25 +1,30 @@
+/*********************/
 /* Cores da página 1 */
+/*********************/
 
 :root {
     --p1header: #61139c7a;
     --p1texto: rgb(255, 255, 255);
     --p1caixas: #632f8aab;
-    --p1titulo: #744b94bb;
+    --p1titulo: #d9cfe0bb;
     --p1background: #61139c2d;
 }
 
+/*********/
 /* Geral */
+/*********/
 
 .pag1{
     background-color: var(--p1background);
-    background-image: linear-gradient(var(--p1background)), url(./imgs/pag1.gif);
+    background-image: linear-gradient(var(--p1background)), url(../imgs/pag1.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100dvh;
-    height: auto;
     scroll-snap-align: start;
+    width: 100dvw;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .titulo.Atividades{
@@ -43,7 +48,9 @@ button{
     margin-left: 30%;
 }
 
+/******************/
 /* Grid principal */
+/******************/
 
 #grid{
     padding: 2%;

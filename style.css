@@ -1,4 +1,6 @@
+/********************/
 /* Cores universais */
+/********************/
 
 :root {
     --playerbackground: rgba(95, 95, 95, 0.397);
@@ -6,7 +8,9 @@
     --playertext: white;
 }
 
+/*********/
 /* Geral */
+/*********/
 
 *{
     transition: all 0.2s ease-in-out;
@@ -20,18 +24,30 @@ body{
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+    scrollbar-width: none;
 }
 
 #Paginas{
-    width: 100%;
+    width: 100hv;
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: row;
+    scrollbar-width: none;
 }
 
-/* Player de musica flutuante */
+/* Garante que os elementos filhos não encolham para caber dentro do body */
+#Paginas > *{
+    flex-shrink: 0;
+}
 
-#audio-player-container {
+/********/
+/* Gbar */
+/********/
+
+#gbar-container {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -40,7 +56,30 @@ body{
     color: var(--playertext);
 }
 
+#gbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#scroll-arrows{
+    justify-self: right;
+    margin-right: 5%;
+    background: var(--playerbackground);
+    border-radius: 10px 10px 0 0;
+}
+
+.arrow{
+    font-size: xx-large;
+    font-weight: bold;
+    border-radius: 0 10px 0 0;
+}
+
+#left-arrow{
+    border-radius: 10px 0 0 0;
+}
+
 #ocultar-audio{
+    width: 6vh;
     border-bottom: none;
     background: var(--playerbackground);
     font-size: x-large;
@@ -48,9 +87,13 @@ body{
     color: var(--playertext);
 }
 
-#ocultar-audio:hover{
+#ocultar-audio:hover, .arrow:hover{
     background-color: var(--playerprogress);
 }
+
+/******************************/
+/* Player de musica flutuante */
+/******************************/
 
 #progress-container {
     width: 100%;
@@ -103,7 +146,9 @@ body{
     padding-left: 15%;
 }
 
+/***************************/
 /* Iframe para sub paginas */
+/***************************/
 
 #iframe{
     position: fixed;
@@ -114,4 +159,13 @@ body{
     z-index: -1;
     width: 100%;
     height: 100%;
+}
+
+/***********/
+/* Scrolls */
+/***********/
+
+#Paginas::-webkit-scrollbar {
+  width: 0px;         
+  display: none;  
 }
