@@ -12,9 +12,12 @@ function voltar() {
 }
 
 // Move o scroll do body horizontalmente de forma suave (smooth)
-function scrollPagina(quantidade, objeto=window) {
+async function scrollPagina(quantidade, objeto=window) {
+    if (objeto.scrollLeft + objeto.clientWidth >= objeto.scrollWidth -1) {
+        quantidade = -objeto.scrollWidth
+    }
     objeto.scrollBy({
         left: quantidade,
         behavior: 'smooth'
-    });
+    })
 }

@@ -68,10 +68,23 @@ body{
     border-radius: 10px 10px 0 0;
 }
 
-.arrow{
+.arrows{
     font-size: xx-large;
     font-weight: bold;
     border-radius: 0 10px 0 0;
+    padding-top: 6%;
+    height: 100%;
+}
+
+.arrow {
+    display: flex;
+    width: 4vh;
+    height: 4vh;
+    fill: none;
+    stroke: white;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 #left-arrow{
@@ -79,15 +92,15 @@ body{
 }
 
 #ocultar-audio{
-    width: 6vh;
     border-bottom: none;
     background: var(--playerbackground);
-    font-size: x-large;
     border-radius: 10px 10px 0 0;
     color: var(--playertext);
+    margin: 0;
+    width: min-content;
 }
 
-#ocultar-audio:hover, .arrow:hover{
+#ocultar-audio:hover, .arrows:hover{
     background-color: var(--playerprogress);
 }
 
