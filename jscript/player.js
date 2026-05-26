@@ -43,7 +43,7 @@ const playlists = {
     "Céu Roxo": {
         "musicas/Ethereal Night.mp3": "The NoexistenceN of you AND me",
         "musicas/May This Moment Last Forever.mp3": "The NoexistenceN of you AND me",
-        "musicas/Hyperwave.mp3": "Magnific.com",
+        "musicas/Clair de Lune - Claude Debussy.mp3": "Youtube: Vinheteiro",
         "musicas/Nightfade_Notes.mp3": "Magnific.com: Kike Gutz",
     },
     "Nostalgia": {
