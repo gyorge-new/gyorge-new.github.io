@@ -13,7 +13,7 @@ const subreps = [
 const titulos = [
     "Front-End",
     "Apresentações",
-    "Slides Ocultos"
+    "Slides Esquecidos"
 ]
 
 // Descrição da caixa

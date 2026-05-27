@@ -52,12 +52,6 @@ const playlists = {
         "musicas/Modular.mp3": "Youtube: liltommyj",
         "musicas/Sweden.mp3": "Youtube: MrSuicideSheep",
     },
-    "Meme shit": {
-        "musicas/Fabio e seus carros.mp3": "Origem? <s>Odio ao Fabio</s> Er... Inspiração",
-        "musicas/Fabio envenenado.mp3": "Origem? PH",
-        "musicas/Fabio e seus carros - alpha.mp3": "Origem? Ideia maluca",
-        "musicas/Temporariamente fora do ar": "Trabalhando em melhorias",
-    },
     "Games": {
         "musicas/SMW-Koopa Castle.mp3": "Youtube: Magnus619666",
         "musicas/SMW-Overworld.mp3": "Youtube: DJMykah",
@@ -68,6 +62,12 @@ const playlists = {
         "musicas/Retrograde Dreams.mp3": "Magnific.com",
         "musicas/Fighters_Game.mp3": "Magnific.com",
         "musicas/joyful-rhythm-walk-funk.mp3": "pixabay.com: lightbeatsmusic",
+    },
+    "Meme shit": {
+        "musicas/Fabio e seus carros.mp3": "Origem? <s>Odio ao Fabio</s> Er... Inspiração",
+        "musicas/Fabio envenenado.mp3": "Origem? PH",
+        "musicas/Fabio e seus carros - alpha.mp3": "Origem? Ideia maluca",
+        "musicas/Temporariamente fora do ar": "Trabalhando em melhorias",
     },
 };
 

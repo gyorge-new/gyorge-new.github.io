@@ -43,6 +43,16 @@ body{
     flex-shrink: 0;
 }
 
+@media (orientation: portrait) {
+    #Paginas{
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 /********/
 /* Gbar */
 /********/
@@ -66,6 +76,12 @@ body{
     margin-right: 5%;
     background: var(--playerbackground);
     border-radius: 10px 10px 0 0;
+}
+
+@media (orientation: portrait) {
+    #scroll-arrows{
+        display: none;
+    }
 }
 
 .arrows{

@@ -26,6 +26,15 @@
     overflow-y: auto;
 }
 
+@media (orientation: portrait) {
+    .pag2{
+        width: 100vw;
+        height: min-content;
+        min-height: 100vh;
+        padding-bottom: 90vh;
+    }
+}
+
 .titulo.Musicas{
     text-align: center;
     font-weight: bold;
