@@ -2,10 +2,7 @@
 ---------------- GERENCIADOR DOS BLOCOS E IFRAMES ----------------
 */
 
-const iframe = document.getElementById('iframe')
-const head = document.querySelector('head')
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-const scrollHorizontal = document.querySelector("#scroll-arrows")
 
 function toSite(url) {
     iframe.src = url
@@ -25,7 +22,10 @@ iframe.addEventListener("load", function() {
     console.log("A URL do iframe mudou para: " + urlAtual)
     if (urlAtual == "about:blank") {
         iframe.style.zIndex = -1
-        document.getElementById("novocss").remove()
+        const novocss = document.getElementById("novocss")
+        if (novocss) {
+            novocss.remove()
+        }
         console.log("limpando pagina")
         scrollHorizontal.style.display = "flex"
     } else {
