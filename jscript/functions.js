@@ -26,6 +26,28 @@ function esconderBarra() {
 
 
 /*
+---------------- Funções auxiliares ----------------
+*/
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+
+
+/*
+---------------- Relacionadas as atividades ----------------
+*/
+
+function toSite(url) {
+    iframe.src = url
+}
+
+function deSite() {
+    iframe.src = "about:blank"
+}
+
+
+
+/*
 ---------------- Relacionadas as músicas ----------------
 */
 
@@ -97,4 +119,41 @@ function tocarAleatorio() {
     } else {
         console.log("Fim da playlist ou música não encontrada.");
     }
+}
+
+
+
+/*
+---------------- Relacionadas as animações extras ----------------
+*/
+
+function animarTrocaDeTexto(elemento, termoParaApagar, novoTermo) {
+    let textoAtual = elemento.innerText;
+    const indiceInicio = textoAtual.indexOf(termoParaApagar);
+
+    if (indiceInicio === -1) {
+        return;
+    }
+
+    const velocidadeApagar = 50; 
+    const velocidadeEscrever = 80;
+    const delayEntreAcoes = 500; // Pausa rápida entre apagar e começar a escrever
+
+
+    function escreverLetra(indiceLetra) {
+        if (indiceLetra < novoTermo.length) {
+            elemento.innerHTML += novoTermo[indiceLetra];
+            setTimeout(escreverLetra, velocidadeEscrever, indiceLetra + 1);
+        }
+    }
+
+    function apagarLetra() {
+        if (elemento.innerHTML.length > indiceInicio) {
+            elemento.innerHTML = elemento.innerHTML.slice(0, -1);
+            setTimeout(apagarLetra, velocidadeApagar);
+        } else {
+            setTimeout(escreverLetra, delayEntreAcoes, 0);
+        }
+    }
+    apagarLetra();
 }

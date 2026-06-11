@@ -110,7 +110,7 @@ let animSet=null                // ID do setTimeout() do evento de animação da
 
 
 /*
------------------ Loops for ----------------
+----------------- Loops for de renderização ----------------
 */
 
 // Atividades escolares
@@ -158,3 +158,19 @@ for (const [playlistNome, musicas] of Object.entries(playlists)) {
 }
 jukebox.innerHTML = htmlGeral;
 
+
+
+/*
+----------------- Definições e outras inicializações ----------------
+*/
+
+// --- Preenchendo SVGs de botões ---
+leftArrow.innerHTML = ICON_ESQUERDA
+rightArrow.innerHTML = ICON_DIREITA
+ocultBtn.innerHTML = ICON_CIMA
+muteBtn.innerHTML = ICON_SOUND
+playBtn.innerHTML = ICON_PLAY
+
+// Styles iniciais
+controles.style.display = 'none'
+progressContainer.style.display = 'none'
