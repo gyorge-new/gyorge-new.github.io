@@ -43,6 +43,7 @@
     font-weight: bold;
     font-size: 300%;
     align-self: center;
+    transition: color 3s ease-in-out;
 }
 
 @keyframes pisca {
@@ -58,4 +59,8 @@
 .cursor::before {
   content: "|";
   opacity: 0;
+}
+
+.gorjao{
+  color: red;
 }

@@ -11,7 +11,6 @@
 function exibirControles(mostrar) {
     const displayStyle = mostrar ? 'grid' : 'none';
     const flexStyle = mostrar ? 'flex' : 'none';
-    
     controles.style.display = displayStyle;
     progressContainer.style.display = flexStyle;
     ocultBtn.innerHTML = mostrar ? ICON_BAIXO : ICON_CIMA;
@@ -89,20 +88,16 @@ function tocarSelecionada(botao, caminhodamusica, origem) {
         progressBar.style.width = "0%";
         return;
     }
-
     if (tocandoAgora && tocandoAgora !== botao) {
         tocandoAgora.innerHTML = ICON_PLAY;
     }
-
     botao.innerHTML = ICON_STOP;
     tocandoAgora = botao;
     playlistAtual = botao.parentElement.parentElement.querySelector('h3').innerHTML;
     musicaAtual = caminhodamusica;
-
     music.src = caminhodamusica;
     music.load();
     music.play();
-
     musicname.innerHTML = `${formatarNomeMusica(caminhodamusica)} - <i>${origem}</i>`;
     playBtn.innerHTML = ICON_PAUSE;
     exibirControles(true);
@@ -127,26 +122,39 @@ function tocarAleatorio() {
 ---------------- Relacionadas as animações extras ----------------
 */
 
-function animarTrocaDeTexto(elemento, termoParaApagar, novoTermo) {
-    let textoAtual = elemento.innerText;
-    const indiceInicio = textoAtual.indexOf(termoParaApagar);
+// Move o scroll do body horizontalmente de forma suave (smooth)
+function scrollPagina(quantidade, objeto=window) {
+    console.log(objeto.scrollWidth, objeto.scrollLeft,quantidade)
+    if (objeto.scrollLeft + objeto.clientWidth >= objeto.scrollWidth -1 && quantidade > 0) {
+        quantidade = -objeto.scrollWidth
+        console.log("VOLTAR",quantidade)
+    }
+    if (objeto.scrollLeft <= 0 && quantidade < 0) {
+        quantidade = objeto.scrollWidth
+        console.log("IR",quantidade)
+    }
+    objeto.scrollBy({
+        left: quantidade,
+        behavior: 'smooth'
+    })
+}
 
+// Animação de maquina de escrever
+function animarTrocaDeTexto(elemento, termoParaApagar, novoTermo) {
+    let textoAtual = elemento.innerHTML;
+    const indiceInicio = textoAtual.indexOf(termoParaApagar);
     if (indiceInicio === -1) {
         return;
     }
-
     const velocidadeApagar = 50; 
     const velocidadeEscrever = 80;
     const delayEntreAcoes = 500; // Pausa rápida entre apagar e começar a escrever
-
-
     function escreverLetra(indiceLetra) {
         if (indiceLetra < novoTermo.length) {
             elemento.innerHTML += novoTermo[indiceLetra];
             setTimeout(escreverLetra, velocidadeEscrever, indiceLetra + 1);
         }
     }
-
     function apagarLetra() {
         if (elemento.innerHTML.length > indiceInicio) {
             elemento.innerHTML = elemento.innerHTML.slice(0, -1);

@@ -20,31 +20,33 @@ document.addEventListener("keydown", (event) => {
     }
 })
 
-document.getElementById("left-arrow").addEventListener('click', () => {
+leftArrow.addEventListener('click', () => {
     scrollPagina(-window.innerWidth/2,document.getElementById('Paginas'))
 })
 
-document.getElementById("right-arrow").addEventListener('click', () => {
+rightArrow.addEventListener('click', () => {
     scrollPagina(window.innerWidth/2,document.getElementById('Paginas'))
 })
 
-document.getElementById('gygor').addEventListener('mouseenter', () => {
-    const element = document.getElementById('gygor')
+titulogygor.addEventListener('mouseenter', () => {
+    const element = titulogygor
     element.classList.add("cursor")
     animSet = setTimeout( () => {
         animSet = null
         if (element.matches(':hover')) {
             if (element.innerText.includes("Gyorge")) {
                 animarTrocaDeTexto(element, "do Gyorge", "de um Gorjão")
+                element.classList.add('gorjao')
             } else if (element.innerText.includes("Gorjão")) {
+                element.classList.remove('gorjao')
                 animarTrocaDeTexto(element, "de um Gorjão", "do Gyorge")
             }
         }
     }, 3000)
 })
 
-document.getElementById('gygor').addEventListener('mouseleave', () => {
-    const element = document.getElementById('gygor')
+titulogygor.addEventListener('mouseleave', () => {
+    const element = titulogygor
     element.classList.remove("cursor")
     if (animSet) {
         clearTimeout(animSet)

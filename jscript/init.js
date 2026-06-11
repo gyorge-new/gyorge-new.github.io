@@ -18,6 +18,7 @@ const ocultBtn = document.getElementById("ocultar-audio")               // <butt
 const rightArrow = document.getElementById("right-arrow")               // <button> da gbar quue muda a página pro lado
 const leftArrow = document.getElementById("left-arrow")                 // <button> da gbar que muda a página pro lado
 const musicname = document.getElementById("musicName")                  // <p> onde fica o nome da musica no player
+const titulogygor = document.getElementById('gygor')                    // <div> reservada para a animação do titulo de boas vindas
 const playBtn = document.getElementById("playBtn")                      // <button> de dar play/puse
 const muteBtn = document.getElementById("muteBtn")                      // <button> de mutar
 const jukebox = document.getElementById("jukebox")                      // <div> onde ficam as musicas
