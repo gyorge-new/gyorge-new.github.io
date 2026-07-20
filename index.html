@@ -3,64 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site do Gyorge</title>
+    <title>Gyorge - Boas-vindas</title>
     <!-- Style -->
     <link rel="shortcut icon" href="./imgs/logo.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style/pag0.css">
-    <link rel="stylesheet" href="style/pag1.css">
-    <link rel="stylesheet" href="style/pag2.css">
-    <link rel="stylesheet" href="style/pag3.css">
 
     <!-- Fontes do Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Atma:wght@300;400;500;600;700&family=Delius&family=Knewave&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-    <div id="Paginas">
-        <!-- página.0 Boas-Vindas -->
-         <div class="pag0 boasvindas">
-            <div class="titmsg">
+    <div id="show">
+        <div id="title">
                 Bem-vindo ao meu site!
-            </div>
-            <div class="titmsg" id="gygor">o site do Gyorge</div>
-         </div>
-
-        <!-- página.1 - Atividades -->
-        <div class="pag1 Atividades">
-            <div class="titulo Atividades">Atividades escolares</div>
-            <div id="grid"></div>
+            <div id="title-mod">O site do Gyorge</div>
         </div>
-
-        <!-- página.2 - Músicas -->
-        <div class="pag2 Music">
-            <div class="titulo Musicas">Músicas legais</div>
-            <div id="jukebox"></div>
-        </div>
-
-        <!-- página.3 - ? -->
-        <div class="pag3">
-            <h1>Em obra- é... digo, programando...</h1>
+        <div id="paglist">
+            Descubra mais sobre mim 
+            <grid></grid>
         </div>
     </div>
 
     <!-- Iframe -->
-     <iframe id="iframe" src="about:blank" frameborder="0"></iframe>
+    <iframe id="iframe" src="about:blank" frameborder="0"></iframe>
+    <div id="divMusic">
+        <audio id="bgMusic">
+            <source id="musicSource" src="musicas/Dead Voxel.mp3" type="audio/mpeg">
+        </audio>
 
-    <!-- Player de músicas -->
-    <audio id="bgMusic">
-        <source id="musicSource" src="" type="audio/mpeg">
-    </audio>
-
-    <div id="gbar-container">
-        <div id="gbar">
-            <button id="ocultar-audio" onclick="esconderBarra()"></button>
-            <div id="scroll-arrows">
-                <button id="left-arrow" class="arrows"></button>
-                <button id="right-arrow" class="arrows"></button>
-            </div>         
-        </div>
+        <button id="ocultar-audio" onclick="esconderBarra(false,this)"></button>      
         <div id="controles-play">
             <div id="progress-container">
                 <div id="progress-bar"></div>
@@ -68,17 +39,15 @@
             <div id="controls-wrapper">
                 <p>Player de músicas</p>
                 <div id="playback-controls">
-                    <button onclick="togglePlay()" id="playBtn" title="Play/Pause"></button>
-                    <button onclick="toggleMute()" id="muteBtn" title="Mudar Volume"></button>
+                    <button onclick="togglePlay(music,this)" id="playBtn" title="Play/Pause"></button>
+                    <button onclick="toggleMute(music,this)" id="muteBtn" title="Mudar Volume"></button>
                 </div>
-                <p id="musicName">--</p>
+                <p id="musicName">Dead Voxel -- Minecraft: C418</p>
             </div>
         </div>
-        
     </div>
     
     <!-- Scripts -->
-    <script src="script.js"></script>
     <script src="jscript/functions.js"></script>
     <script src="jscript/init.js"></script>
     <script src="jscript/events.js"></script>

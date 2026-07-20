@@ -8,26 +8,6 @@
 ---------------- Eventos das animações ----------------
 */
 
-document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        scrollPagina(-window.innerWidth/2,document.getElementById('Paginas'))
-    }
-
-    if (event.key === "ArrowRight") {
-        event.preventDefault();
-        scrollPagina(window.innerWidth/2,document.getElementById('Paginas'))
-    }
-})
-
-leftArrow.addEventListener('click', () => {
-    scrollPagina(-window.innerWidth/2,document.getElementById('Paginas'))
-})
-
-rightArrow.addEventListener('click', () => {
-    scrollPagina(window.innerWidth/2,document.getElementById('Paginas'))
-})
-
 titulogygor.addEventListener('mouseenter', () => {
     const element = titulogygor
     element.classList.add("cursor")
@@ -54,16 +34,41 @@ titulogygor.addEventListener('mouseleave', () => {
     }
 })
 
-
-
 /*
----------------- Eventos das músicas ----------------
+---------------- Funcionamento do "Descubra mais" ----------------
 */
 
-// Quando a música atual termina
-music.addEventListener("ended", () => {
-    tocarAleatorio();
-});
+gridDiscover.addEventListener("mouseover", (event) => {
+    const item = event.target.closest(".pag");
+    if (!item || !gridDiscover.contains(item)) return;
+    const iframeLink = item.querySelector("iframe").src
+    iframeGeral.src = iframeLink
+})
+
+gridDiscover.addEventListener("click", (event) => {
+    const itemID = event.target.closest(".pag").id
+    window.location.hash = itemID+".pag"
+})
+
+window.addEventListener("hashchange", () => {
+    const locationHash = location.hash
+    if (locationHash.includes(".pag")) {
+        carregarIframe()
+    } else {
+        descarregarIframe()
+    }
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+    const locationHash = location.hash
+    if (locationHash.includes(".pag")) {
+        carregarIframe()
+    }
+})
+
+/*
+---------------- Músicas ----------------
+*/
 
 // Atualiza a barra de progresso conforme a música toca
 music.addEventListener("timeupdate", () => {
@@ -81,35 +86,5 @@ progressContainer.addEventListener("click", (e) => {
     
     if (duration) {
         music.currentTime = (clickX / width) * duration;
-    }
-});
-
-
-
-/*
----------------- Eventos da troca de site ----------------
-*/
-
-document.addEventListener("DOMContentLoaded", () => {
-    deSite()
-});
-
-
-iframe.addEventListener("load", function() {
-    const urlAtual = iframe.contentWindow.location.href
-    console.log("A URL do iframe mudou para: " + urlAtual)
-    if (urlAtual == "about:blank") {
-        iframe.style.zIndex = -1
-        const novocss = document.getElementById("novocss")
-        if (novocss) {
-            novocss.remove()
-        }
-        console.log("limpando pagina")
-        scrollHorizontal.style.display = "flex"
-    } else {
-        iframe.style.zIndex = 8
-        head.innerHTML += `<link id="novocss" rel="stylesheet" href="${urlAtual}/style.css">`
-        console.log("prenchendo pagina")
-        scrollHorizontal.style.display = "none"
     }
 });

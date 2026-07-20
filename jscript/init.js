@@ -8,26 +8,14 @@
 ---------------- Definição de constantes ----------------
 */
 
-// seletor DOM
-
 const progressContainer = document.getElementById("progress-container") // <div> div do progresso da música
-const scrollHorizontal = document.querySelector("#scroll-arrows")       // <div> com os botões do scroll
-const controles = document.getElementById("controls-wrapper")           // <div> com os controles da música
+const gridDiscover = document.querySelector("#paglist grid")            // <grid> do diccover da página inicial
 const progressBar = document.getElementById("progress-bar")             // <div> de progresso da música
 const ocultBtn = document.getElementById("ocultar-audio")               // <button> de ocultar audio
-const rightArrow = document.getElementById("right-arrow")               // <button> da gbar quue muda a página pro lado
-const leftArrow = document.getElementById("left-arrow")                 // <button> da gbar que muda a página pro lado
-const musicname = document.getElementById("musicName")                  // <p> onde fica o nome da musica no player
-const titulogygor = document.getElementById('gygor')                    // <div> reservada para a animação do titulo de boas vindas
-const playBtn = document.getElementById("playBtn")                      // <button> de dar play/puse
-const muteBtn = document.getElementById("muteBtn")                      // <button> de mutar
-const jukebox = document.getElementById("jukebox")                      // <div> onde ficam as musicas
-const divumlayot = document.getElementById("grid")                      // <div> grid das atividades escolares
+const titulogygor = document.getElementById('title-mod')                // <div> reservada para a animação do titulo de boas vindas
+const iframeGeral = document.querySelector("#iframe")                   // <iframe> que sobrepoe tudo
 const music = document.getElementById("bgMusic")                        // <source> do audio de fundo
-const iframe = document.getElementById('iframe')                        // <iframe> das atividades
-const head = document.querySelector('head')                             // <head> do HMTL
-
-// Ícones
+const paginas = document.getElementById("pag")                          // <??>
 
 const ICON_PLAY = `<svg fill="none" height="36" viewBox="0 0 36 36" width="36"><path d="M 17 8.6 L 10.89 4.99 C 9.39 4.11 7.5 5.19 7.5 6.93 C 7.5 6.93 7.5 6.93 7.5 6.93 L 7.5 29.06 C 7.5 30.8 9.39 31.88 10.89 31 C 10.89 31 10.89 31 10.89 31 L 17 27.4 C 17 27.4 17 27.4 17 27.4 C 17 27.4 17 27.4 17 27.4 L 17 8.6 C 17 8.6 17 8.6 17 8.6 C 17 8.6 17 8.6 17 8.6 Z M 17 8.6 L 17 8.6 C 17 8.6 17 8.6 17 8.6 C 17 8.6 17 8.6 17 8.6 V 27.4 C 17 27.4 17 27.4 17 27.4 C 17 27.4 17 27.4 17 27.4 L 33 18 C 33 18 33 18 33 18 C 33 18 33 18 33 18 V 18 L 17 8.6 C 17 8.6 17 8.6 17 8.6 C 17 8.6 17 8.6 17 8.6 Z" fill="white"></path></svg>`
 const ICON_PAUSE = `<svg fill="none" height="36" viewBox="0 0 36 36" width="36"><path d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73 5.58 7.5 6.15 7.5 6.75 L 7.5 29.25 C 7.5 29.84 7.73 30.41 8.15 30.84 C 8.58 31.26 9.15 31.5 9.75 31.5 L 12.75 31.5 C 13.34 31.5 13.91 31.26 14.34 30.84 C 14.76 30.41 15 29.84 15 29.25 L 15 6.75 C 15 6.15 14.76 5.58 14.34 5.15 C 13.91 4.73 13.34 4.5 12.75 4.5 Z M 26.25 4.5 L 23.25 4.5 C 22.65 4.5 22.08 4.73 21.65 5.15 C 21.23 5.58 21 6.15 21 6.75 V 29.25 C 21 29.84 21.23 30.41 21.65 30.84 C 22.08 31.26 22.65 31.5 23.25 31.5 L 26.25 31.5 C 26.84 31.5 27.41 31.26 27.84 30.84 C 28.26 30.41 28.5 29.84 28.5 29.25 V 6.75 L 28.5 6.75 C 28.5 6.15 28.26 5.58 27.84 5.15 C 27.41 4.73 26.84 4.5 26.25 4.5 Z" fill="white"></path></svg>`
@@ -36,142 +24,60 @@ const ICON_SOUND = `<svg class="sombutton" height="24" viewBox="0 0 24 24" width
 const ICON_MUTE = `<svg class="sombutton" height="24" viewBox="0 0 24 24" width="24"><path d="M11.60 2.08L11.48 2.14L3.91 6.68C3.02 7.21 2.28 7.97 1.77 8.87C1.26 9.77 1.00 10.79 1 11.83V12.16L1.01 12.56C1.07 13.52 1.37 14.46 1.87 15.29C2.38 16.12 3.08 16.81 3.91 17.31L11.48 21.85C11.63 21.94 11.80 21.99 11.98 21.99C12.16 22.00 12.33 21.95 12.49 21.87C12.64 21.78 12.77 21.65 12.86 21.50C12.95 21.35 13 21.17 13 21V3C12.99 2.83 12.95 2.67 12.87 2.52C12.80 2.37 12.68 2.25 12.54 2.16C12.41 2.07 12.25 2.01 12.08 2.00C11.92 1.98 11.75 2.01 11.60 2.08ZM4.94 8.4V8.40L11 4.76V19.23L4.94 15.6C4.38 15.26 3.92 14.80 3.58 14.25C3.24 13.70 3.05 13.07 3.00 12.43L3 12.17V11.83C2.99 11.14 3.17 10.46 3.51 9.86C3.85 9.25 4.34 8.75 4.94 8.4ZM21.29 8.29L19 10.58L16.70 8.29L16.63 8.22C16.43 8.07 16.19 7.99 15.95 8.00C15.70 8.01 15.47 8.12 15.29 8.29C15.12 8.47 15.01 8.70 15.00 8.95C14.99 9.19 15.07 9.43 15.22 9.63L15.29 9.70L17.58 12L15.29 14.29C15.19 14.38 15.12 14.49 15.06 14.61C15.01 14.73 14.98 14.87 14.98 15.00C14.98 15.13 15.01 15.26 15.06 15.39C15.11 15.51 15.18 15.62 15.28 15.71C15.37 15.81 15.48 15.88 15.60 15.93C15.73 15.98 15.86 16.01 15.99 16.01C16.12 16.01 16.26 15.98 16.38 15.93C16.50 15.87 16.61 15.80 16.70 15.70L19 13.41L21.29 15.70L21.36 15.77C21.56 15.93 21.80 16.01 22.05 15.99C22.29 15.98 22.53 15.88 22.70 15.70C22.88 15.53 22.98 15.29 22.99 15.05C23.00 14.80 22.93 14.56 22.77 14.36L22.70 14.29L20.41 12L22.70 9.70C22.80 9.61 22.87 9.50 22.93 9.38C22.98 9.26 23.01 9.12 23.01 8.99C23.01 8.86 22.98 8.73 22.93 8.60C22.88 8.48 22.81 8.37 22.71 8.28C22.62 8.18 22.51 8.11 22.39 8.06C22.26 8.01 22.13 7.98 22.00 7.98C21.87 7.98 21.73 8.01 21.61 8.06C21.49 8.12 21.38 8.19 21.29 8.29Z" fill="white"></path></svg>`
 const ICON_CIMA = `<svg class="arrow" viewBox="0 0 100 100"><polyline points="20,60 50,30 80,60"/></svg>`
 const ICON_BAIXO = `<svg class="arrow" viewBox="0 0 100 100"><polyline points="20,40 50,70 80,40"/></svg>`
-const ICON_ESQUERDA = `<svg class="arrow" viewBox="0 0 100 100"><polyline points="60,20 30,50 60,80"/></svg>`
-const ICON_DIREITA = `<svg class="arrow" viewBox="0 0 100 100"><polyline points="40,20 70,50 40,80"/></svg>`
-
-
-
-/*
----------------- Arrays/Jsons/Dictionarys de renderização ----------------
-*/
-
-// Atividades escolares
-
-const subreps = [ // links do subsite de atividades
-    "https://gyorge-new.github.io/Front-End-2025",
-    "https://gyorge-new.github.io/Slides-Diversos",
-    "https://gyorge-new.github.io/Slides-Ocultos"
-]
-const titulos = [ // Titulos de cada atividade
-    "Front-End",
-    "Apresentações",
-    "Slides Esquecidos"
-]
-const descricoes = [ // Descrição de cada atividade
-    "Materia onde supostamente o Grande Fabio Dias ensina HTML e Java Script. Aqui está todos os Layouts que fiz durante tais aulas",
-    "Diversos slides que fui fazendo durante os anos para ganhar nota em alguma materia",
-    "Slides que me avisaram que eu tinha, porque eu não lembrava"
-]
-
-// Playlists de músicas
-
-const playlists = {
-    "Céu Roxo": {
-        "musicas/Ethereal Night.mp3": "The NoexistenceN of you AND me",
-        "musicas/May This Moment Last Forever.mp3": "The NoexistenceN of you AND me",
-        "musicas/Clair de Lune - Claude Debussy.mp3": "Youtube: Vinheteiro",
-        "musicas/Nightfade_Notes.mp3": "Magnific.com: Kike Gutz",
-    },
-    "Nostalgia": {
-        "musicas/Stranger Things Remix And Aria Math.mp3": "Youtube: ALTEFIED",
-        "musicas/Hollow Knight - Crystal Peaks.mp3": "Youtube: Terraban",
-        "musicas/Modular.mp3": "Youtube: liltommyj",
-        "musicas/Sweden.mp3": "Youtube: MrSuicideSheep",
-    },
-    "Games": {
-        "musicas/SMW-Koopa Castle.mp3": "Youtube: Magnus619666",
-        "musicas/SMW-Overworld.mp3": "Youtube: DJMykah",
-        "musicas/SMW-Underground.mp3": "Youtube: DJMykah"
-    },
-    "Happy": {
-        "musicas/Voyager X.mp3": "Magnific.com",
-        "musicas/Retrograde Dreams.mp3": "Magnific.com",
-        "musicas/Fighters_Game.mp3": "Magnific.com",
-        "musicas/joyful-rhythm-walk-funk.mp3": "pixabay.com: lightbeatsmusic",
-    },
-    "Meme shit": {
-        "musicas/Fabio e seus carros.mp3": "Origem? <s>Odio ao Fabio</s> Er... Inspiração",
-        "musicas/Fabio envenenado.mp3": "Origem? PH",
-        "musicas/Fabio e seus carros - alpha.mp3": "Origem? Ideia maluca",
-        "musicas/Temporariamente fora do ar": "Trabalhando em melhorias",
-    },
-}
-
-
 
 /*
 ----------------- Variáveis de estado ----------------
 */
 
-let playlistAtual = null;       // Define a playlist atual nas músicas
-let tocandoAgora = null;        // Define a música que esta tocando agora
-let musicaAtual = null;         // Define a música selecionada
-let animSet=null                // ID do setTimeout() do evento de animação da tela de boas-vindas gy/gor
-
-
+let estadoDosControles = null  // Define a barra de controles de musica para começar escondida
+let animSet= null                // ID do setTimeout() do evento de animação da tela de boas-vindas gy/gor
+let rectDoIframe = null
 
 /*
------------------ Loops for de renderização ----------------
+----------------- Variáveis de render ----------------
 */
-
-// Atividades escolares
-
-for (let i = 0; i < subreps.length; i++) {
-    const repo = subreps[i]
-    const descricao = descricoes[i]
-    const titulo = titulos[i]
-    
-    divumlayot.innerHTML += `
-    <div id="${repo}" class="bloco">
-        <h3>${titulo}</h3>
-        <button onclick="toSite('${repo}/')">
-            <div id="${repo}" class="subloco">
-                <img src="${repo}/thumb.png" alt="">
-                <p>${descricao}</p>
-            </div>
-        </button>
-    </div>
-    `
-}
-
-// Músicas
-
-let htmlGeral = ""; // Variável auxiliar
-for (const [playlistNome, musicas] of Object.entries(playlists)) {
-    let musicasHtml = "";
-
-    for (const [caminho, origem] of Object.entries(musicas)) {
-        const nomeFormatado = formatarNomeMusica(caminho);
-        musicasHtml += `
-            <div class="cadamusica">
-                <button id="${caminho}" class="playmusic" onclick="tocarSelecionada(this, '${caminho}', '${origem}')">${ICON_PLAY}</button>
-                <p>${nomeFormatado} - <i>${origem}</i></p>
-            </div>
-        `;
+let discoverARRAY = [
+    {
+        title: "Atividades",
+        desc: "Atividades que eu fiz durante a escola",
+        link: "./subpages/atividades.html",
+        color: "purple",
+        id: "atividades"
+    },
+    {
+        title: "Músicas",
+        desc: "Seleção de alguns sons legais",
+        link: "./subpages/musicas.html",
+        color: "green",
+        id: "musicas"
+    },
+    {
+        title: "A história",
+        desc: "A história de tudo",
+        link: "./subpages/historia.html",
+        color: "orange",
+        id: "historia"
     }
-
-    htmlGeral += `
-        <div class="playlist">
-            <h3>${playlistNome}</h3>
-            ${musicasHtml}
-        </div>
-    `;
-}
-jukebox.innerHTML = htmlGeral;
-
-
+]
 
 /*
------------------ Definições e outras inicializações ----------------
+----------------- INIT ----------------
 */
 
-// --- Preenchendo SVGs de botões ---
-leftArrow.innerHTML = ICON_ESQUERDA
-rightArrow.innerHTML = ICON_DIREITA
-ocultBtn.innerHTML = ICON_CIMA
-muteBtn.innerHTML = ICON_SOUND
-playBtn.innerHTML = ICON_PLAY
+renderDiscover(gridDiscover, discoverARRAY)
 
-// Styles iniciais
-controles.style.display = 'none'
-progressContainer.style.display = 'none'
+document.getElementById("ocultar-audio").innerHTML = ICON_CIMA         
+document.getElementById("muteBtn").innerHTML = ICON_SOUND                   
+document.getElementById("playBtn").innerHTML = ICON_PLAY
+
+window.musicAPI = {
+    mudarMusica,
+    togglePlay,
+    toggleMute,
+    ICON_PLAY,
+    ICON_PAUSE,
+    ICON_STOP,
+    ICON_MUTE,
+    ICON_CIMA,
+    ICON_BAIXO
+};

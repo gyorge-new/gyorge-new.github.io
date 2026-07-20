@@ -2,142 +2,9 @@
 ---------------- SCRIPT DE FUNÇÕES ----------------
 */
 
-
-
-/*
----------------- Relacionadas a gbar ----------------
-*/
-// Exibe ou oculta a gbar
-function exibirControles(mostrar) {
-    const displayStyle = mostrar ? 'grid' : 'none';
-    const flexStyle = mostrar ? 'flex' : 'none';
-    controles.style.display = displayStyle;
-    progressContainer.style.display = flexStyle;
-    ocultBtn.innerHTML = mostrar ? ICON_BAIXO : ICON_CIMA;
-}
-
-// Alterna entre os estados visíveis/invisíveis da barra
-function esconderBarra() {
-    const estaEscondido = controles.style.display == 'none';
-    exibirControles(estaEscondido);
-}
-
-
-
-/*
----------------- Funções auxiliares ----------------
-*/
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-
-
-/*
----------------- Relacionadas as atividades ----------------
-*/
-
-function toSite(url) {
-    iframe.src = url
-}
-
-function deSite() {
-    iframe.src = "about:blank"
-}
-
-
-
-/*
----------------- Relacionadas as músicas ----------------
-*/
-
-// Limpa o caminho do arquivo para exibir um nome amigável
-function formatarNomeMusica(caminho) {
-    return caminho
-        .replace("musicas/", "")
-        .replace(".mp3", "")
-        .replace(/_/g, " ")
-        .replace(/ - /g, " ")
-        .replace(/-/g, " ");
-}
-
-// Da Play / Pause na música
-function togglePlay() {
-    if (music.paused) {
-        music.play();
-        playBtn.innerHTML = ICON_PAUSE;
-    } else {
-        music.pause();
-        playBtn.innerHTML = ICON_PLAY;
-    }
-}
-
-// Da Mute / Unmute na música
-function toggleMute() {
-    music.muted = !music.muted;
-    muteBtn.innerHTML = music.muted ? ICON_MUTE : ICON_SOUND;
-}
-
-// Toca uma música específica da lista
-function tocarSelecionada(botao, caminhodamusica, origem) {
-    if (botao == tocandoAgora && !music.paused) {
-        botao.innerHTML = ICON_PLAY;
-        playBtn.innerHTML = ICON_PLAY;
-        musicname.innerHTML = "--"
-        music.src = "";
-        music.load();
-        progressBar.style.width = "0%";
-        return;
-    }
-    if (tocandoAgora && tocandoAgora !== botao) {
-        tocandoAgora.innerHTML = ICON_PLAY;
-    }
-    botao.innerHTML = ICON_STOP;
-    tocandoAgora = botao;
-    playlistAtual = botao.parentElement.parentElement.querySelector('h3').innerHTML;
-    musicaAtual = caminhodamusica;
-    music.src = caminhodamusica;
-    music.load();
-    music.play();
-    musicname.innerHTML = `${formatarNomeMusica(caminhodamusica)} - <i>${origem}</i>`;
-    playBtn.innerHTML = ICON_PAUSE;
-    exibirControles(true);
-}
-
-// Apesar do nome só troca pra próxima música da playlist
-function tocarAleatorio() {
-    const musicas = Object.entries(playlists[`${playlistAtual}`]);
-    const indice = musicas.findIndex(item => item[0] === musicaAtual);
-    if (indice !== -1 && indice + 1 < musicas.length) {
-        const [proximaChave, proximoValor] = musicas[indice + 1];
-        const botao = document.getElementById(proximaChave)
-        tocarSelecionada(botao,proximaChave,proximoValor)
-    } else {
-        console.log("Fim da playlist ou música não encontrada.");
-    }
-}
-
-
-
 /*
 ---------------- Relacionadas as animações extras ----------------
 */
-
-// Move o scroll do body horizontalmente de forma suave (smooth)
-function scrollPagina(quantidade, objeto=window) {
-    console.log(objeto.scrollWidth, objeto.scrollLeft,quantidade)
-    if (objeto.scrollLeft + objeto.clientWidth >= objeto.scrollWidth -1 && quantidade > 0) {
-        quantidade = -objeto.scrollWidth
-        console.log("VOLTAR",quantidade)
-    }
-    if (objeto.scrollLeft <= 0 && quantidade < 0) {
-        quantidade = objeto.scrollWidth
-        console.log("IR",quantidade)
-    }
-    objeto.scrollBy({
-        left: quantidade,
-        behavior: 'smooth'
-    })
-}
 
 // Animação de maquina de escrever
 function animarTrocaDeTexto(elemento, termoParaApagar, novoTermo) {
@@ -164,4 +31,136 @@ function animarTrocaDeTexto(elemento, termoParaApagar, novoTermo) {
         }
     }
     apagarLetra();
+}
+
+/*
+---------------- Renderização ----------------
+*/
+
+// renderização do "Descubra mais sobre mim"
+function renderDiscover(parentDiv, discoverARRAY) {
+    for (let index = 0; index < discoverARRAY.length; index++) {
+        const element = discoverARRAY[index];
+        const title = element["title"]
+        const desc = element["desc"]
+        const link = element["link"]
+        const color = element["color"]
+        const id = element["id"]
+        parentDiv.innerHTML += `
+            <div class="pag" id="${id}">
+                <div class="clickDiscover">
+                    <h4 style="text-decoration: underline ${color} 3px;"> ${title} </h4>
+                    <p>${desc}</p>
+                    <iframe src="${link}" inert frameborder="0" id="pagframe"></iframe>
+                </div>
+            </div>
+        `
+    }
+}
+
+/*
+---------------- Músicas ----------------
+*/
+
+// Muda o estado da barra de controles
+function esconderBarra(esconder, ocultBtn) {
+    estadoDosControles = esconder || !estadoDosControles
+    const altura = divMusic.querySelector("#controles-play").getBoundingClientRect().height
+    if (estadoDosControles) {
+        divMusic.style.bottom = "0px"
+        ocultBtn.innerHTML = ICON_BAIXO
+    } else {
+        divMusic.style.bottom = -altura + "px"
+        ocultBtn.innerHTML = ICON_CIMA
+    }
+}
+
+// Da Play / Pause na música
+function togglePlay(source,playBtn) {
+    if (source.paused) {
+        source.play();
+        playBtn.innerHTML = ICON_PAUSE;
+    } else {
+        source.pause();
+        playBtn.innerHTML = ICON_PLAY;
+    }
+}
+
+// Muta ou desmuta a musica
+function toggleMute(source, muteBtn) {
+    source.muted = !source.muted;
+    muteBtn.innerHTML = source.muted ? ICON_MUTE : ICON_SOUND;
+}
+
+// Mudar para uma musica especifica
+function mudarMusica(source, playBtn, ocultBtn, descElement, descText, caminhodamusica) {
+    source.src = caminhodamusica;
+    source.load();
+    source.play();
+    descElement.innerHTML = descText
+    playBtn.innerHTML = ICON_PAUSE;
+    esconderBarra(true,ocultBtn);
+}
+
+
+/*
+---------------- Carregamento de iframes ----------------
+*/
+
+function carregarIframe() {
+    document.body.style.pointerEvents = "none"
+    const locationHash = location.hash
+    const item = document.querySelector(locationHash)
+    const iframeSubpag = item.querySelector("iframe")
+    const rect = iframeSubpag.getBoundingClientRect()
+    rectDoIframe = iframeSubpag
+    const iframeLink = item.querySelector("iframe").src
+    if (iframeLink!=iframeGeral.src){
+        iframeGeral.src = iframeLink
+    }
+    
+    Object.assign(iframeGeral.style, {
+        transition: "none",
+        position: "fixed",
+        top: rect.top + "px",
+        left: rect.left + "px",
+        width: rect.width + "px",
+        height: rect.height + "px",
+        transform: "scale(1)",
+        opacity: "1",
+        zIndex: 100,
+    })
+    iframeGeral.offsetWidth
+    requestAnimationFrame(() => {
+        iframeGeral.style.transition = "all 0.6s ease-in-out"
+        iframeGeral.style.top = "0"
+        iframeGeral.style.left = "0"
+        iframeGeral.style.width = "100vw"
+        iframeGeral.style.height = "100vh"
+    })
+    iframeGeral.addEventListener("transitionend", () => {
+        document.body.style.pointerEvents = "auto"
+    }, { once: true });
+}
+
+function descarregarIframe() {
+    const rect = rectDoIframe.getBoundingClientRect()
+    document.body.style.pointerEvents = "none"
+    Object.assign(iframeGeral.style, {
+        transition: "all 0.6s ease-in-out",
+        position: "fixed",
+        top: rect.top + "px",
+        left: rect.left + "px",
+        width: rect.width + "px",
+        height: rect.height + "px",
+        zIndex: 100,
+    })
+    iframeGeral.addEventListener("transitionend", () => {
+        iframeGeral.style.transition = "none"
+        iframeGeral.style.opacity = "0"
+        iframeGeral.style.zIndex = 0
+        iframeGeral.addEventListener("transitionend", () => {
+            document.body.style.pointerEvents = "auto"
+        }, { once: true });
+    }, { once: true });
 }

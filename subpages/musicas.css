@@ -13,48 +13,48 @@
 /* Geral */
 /*********/
 
-.pag2{
+body{
     background-color: var(--p2background);
     background-image: linear-gradient(color-mix(in srgb, var(--p2background) 80%, transparent)), url(../imgs/pag2.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    color: var(--p2texto);
-    scroll-snap-align: start;
+    background-attachment: fixed;
     width: 100dvw;
     height: 100vh;
-    overflow-y: auto;
-}
-
-@media (orientation: portrait) {
-    .pag2{
-        width: 100vw;
-        height: min-content;
-        min-height: 100vh;
-        padding-bottom: 90vh;
-    }
+    margin: 0;
+    color: var(--p2texto);
 }
 
 .titulo.Musicas{
+    font-size: xx-large;
     text-align: center;
     font-weight: bold;
-    width: 100%;
     background-color: var(--p2header);
     color: var(--p2titulo);
     padding: 2%;
-    font-size: 190%;
 }
+
+button{
+    background: none;
+    border: none;
+}
+
+/***********/
+/* Musicas */
+/***********/
 
 #jukebox{
     padding: 10px 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     column-gap: 5%;
+    padding-bottom: 62px;
 }
 
 h3{
     font-weight: bold;
-    font-size: large;
+    font-size: x-large;
     text-align: center;
 }
 

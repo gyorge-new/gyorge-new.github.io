@@ -3,9 +3,9 @@
 /********************/
 
 :root {
-    --playerbackground: rgba(95, 95, 95, 0.397);
-    --playerprogress: rgb(150, 150, 150);
-    --playertext: white;
+    --title: rgb(255, 255, 255);
+    --title-background: rgb(6, 19, 32); 
+    --background: rgb(4, 21, 39);
 }
 
 /*********/
@@ -14,187 +14,223 @@
 
 *{
     transition: all 0.2s ease-in-out;
-    box-sizing: border-box;
 }
 
 body{
     padding: 0;
     margin: 0;
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-    scrollbar-width: none;
 }
 
-#Paginas{
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    display: flex;
-    flex-direction: row;
-    scrollbar-width: none;
-}
-
-/* Garante que os elementos filhos não encolham para caber dentro do body */
-#Paginas > *{
-    flex-shrink: 0;
-}
-
-@media (orientation: portrait) {
-    #Paginas{
-        overflow-x: hidden;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/********/
-/* Gbar */
-/********/
-
-#gbar-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    color: var(--playertext);
-}
-
-#gbar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-#scroll-arrows{
-    justify-self: right;
-    margin-right: 5%;
-    background: var(--playerbackground);
-    border-radius: 10px 10px 0 0;
-}
-
-@media (orientation: portrait) {
-    #scroll-arrows{
-        display: none;
-    }
-}
-
-.arrows{
-    font-size: xx-large;
+#title{
     font-weight: bold;
-    border-radius: 0 10px 0 0;
-    padding-top: 6%;
-    height: 100%;
+    font-size: 4vw;
+    text-align: center;
+    padding: 8vh 0 10vh 0;
+    background-color: var(--title-background);
 }
 
-.arrow {
-    display: flex;
-    width: 4vh;
-    height: 4vh;
-    fill: none;
-    stroke: white;
-    stroke-width: 8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-#left-arrow{
-    border-radius: 10px 0 0 0;
-}
-
-#ocultar-audio{
-    border-bottom: none;
-    background: var(--playerbackground);
-    border-radius: 10px 10px 0 0;
-    color: var(--playertext);
-    margin: 0;
-    width: min-content;
-}
-
-#ocultar-audio:hover, .arrows:hover{
-    background-color: var(--playerprogress);
-}
-
-/******************************/
-/* Player de musica flutuante */
-/******************************/
-
-#progress-container {
-    width: 100%;
-    height: 8px;
-    background: var(--playerbackground);
-    cursor: pointer;
-}
-
-#progress-bar {
-    width: 0%;
-    height: 100%;
-    background: var(--playerprogress);
-    transition: width 0.1s linear;
-}
-
-#controls-wrapper {
+#pag{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
-    padding: 0 0;
-    background: var(--playerbackground);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    box-sizing: border-box;
 }
 
-#playback-controls{
-    display: flex;
-    place-items: center;
+#show{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--background);
+  color: var(--title);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
-#playback-controls button {
-    background: none;
-    border: none;
-    color: var(--playertext);
-    font-size: 20px;
-    margin: 0 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    place-items: center;
+/**********************/
+/* Animação do título */
+/**********************/
+
+#title-mod {
+    transition: color 2s ease-in-out;
 }
 
-#playback-controls button:hover {
-    background: var(--playerprogress);
-    color: var(--playerbackground);
+@keyframes pisca {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.sombutton{
-    padding-left: 15%;
+.cursor::after {
+  content: "|";
+  animation: pisca 0.7s infinite;
+}
+
+.cursor::before {
+  content: "|";
+  opacity: 0;
+}
+
+.gorjao{
+  color: red;
+}
+
+/**********************/
+/* Páginas */
+/**********************/
+
+#paglist{
+  font-weight: 300;
+  font-size: larger;
+  text-align: center;
+  font-weight: bold;
+}
+
+#paglist grid{
+  margin: 2vw;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2vw;
+}
+
+#paglist .pag{
+  aspect-ratio: 16/10;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  text-align: center;
+}
+
+#paglist .pag:hover{
+  transform: scale(1.1);
+}
+
+#paglist .pag p{
+  font-size: medium;
+  font-weight: 390;
+}
+
+#paglist .pag *{
+  width: 100%;
+}
+
+#paglist iframe{
+  aspect-ratio: 16/9;
+  top: 0;
+  left: 0;
+}
+
+iframe{
+  transition: none;
+  background-color: white;
 }
 
 /***************************/
 /* Iframe para sub paginas */
 /***************************/
 
-#iframe{
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
+:root {
+  --playerbackground: rgba(0, 0, 0, 0.4);
+  --playerprogress: rgba(255, 255, 255, 0.7);
+  --playertext: white;
 }
 
-/***********/
-/* Scrolls */
-/***********/
+#divMusic{
+  position: fixed;
+  left: 0;
+  bottom: -1000px;
+  z-index: 900;
+  color: var(--playertext);
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
 
-#Paginas::-webkit-scrollbar {
-  width: 0px;         
-  display: none;  
+.arrow {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: white;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 0;
+}
+
+#controles-play{
+  backdrop-filter: blur(5px);
+  width: 100vw;
+  pointer-events: auto;
+}
+
+#ocultar-audio{
+  border: none;
+  background: var(--playerbackground);
+  border-radius: 10px 10px 0 0;
+  color: var(--playertext);
+  width: min-content;
+  aspect-ratio: 1/1;
+  backdrop-filter: blur(5px);
+  pointer-events: auto;
+}
+
+#ocultar-audio:hover{
+  background-color: var(--playerprogress);
+}
+
+#progress-container {
+  width: 100%;
+  height: 8px;
+  background: var(--playerbackground);
+  cursor: pointer;
+}
+
+#progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--playerprogress);
+  transition: width 0.1s linear;
+}
+
+#controls-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  padding: 0 0;
+  background: var(--playerbackground);
+}
+
+#playback-controls{
+  display: flex;
+  place-items: center;
+}
+
+#playback-controls button {
+  background: none;
+  border: none;
+  color: var(--playertext);
+  font-size: 20px;
+  margin: 0 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  place-items: center;
+}
+
+#playback-controls button:hover {
+  background: var(--playerprogress);
+  color: var(--playerbackground);
+}
+
+.sombutton{
+  padding-left: 15%;
 }
