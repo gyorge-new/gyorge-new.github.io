@@ -39,15 +39,18 @@ titulogygor.addEventListener('mouseleave', () => {
 */
 
 gridDiscover.addEventListener("mouseover", (event) => {
-    const item = event.target.closest(".pag");
-    if (!item || !gridDiscover.contains(item)) return;
+    const item = event.target.closest(".pag")
+    if (!item || !gridDiscover.contains(item)) return
     const iframeLink = item.querySelector("iframe").src
     iframeGeral.src = iframeLink
 })
 
 gridDiscover.addEventListener("click", (event) => {
-    const itemID = event.target.closest(".pag").id
-    window.location.hash = itemID+".pag"
+    const item = event.target.closest(".pag")
+    if (!item || !gridDiscover.contains(item)) return
+    const iframeLink = item.querySelector("iframe").src
+    iframeGeral.src = iframeLink
+    window.location.hash = item.id+".pag"
 })
 
 window.addEventListener("hashchange", () => {

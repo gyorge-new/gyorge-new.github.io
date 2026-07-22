@@ -144,7 +144,6 @@ function carregarIframe() {
 }
 
 function descarregarIframe() {
-    iframeGeral.src = "about:blank"
     const rect = rectDoIframe.getBoundingClientRect()
     document.body.style.pointerEvents = "none"
     Object.assign(iframeGeral.style, {
@@ -162,6 +161,7 @@ function descarregarIframe() {
         iframeGeral.style.zIndex = 0
         iframeGeral.addEventListener("transitionend", () => {
             document.body.style.pointerEvents = "auto"
+            iframeGeral.src = "about:blank"
         }, { once: true });
     }, { once: true });
 }
