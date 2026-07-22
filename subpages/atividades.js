@@ -16,7 +16,7 @@ const descricoes = [ // Descrição de cada atividade
     "Slides que me avisaram que eu tinha, porque eu não lembrava"
 ]
 
-const divumlayot = document.getElementById("grid") 
+const divumlayot = document.querySelector("grid") 
 
 for (let i = 0; i < subreps.length; i++) {
     const repo = subreps[i]
@@ -27,7 +27,7 @@ for (let i = 0; i < subreps.length; i++) {
     <div id="${repo}" class="bloco">
         <h3>${titulo}</h3>
         <a href="${repo}">
-            <div id="${repo}" class="subloco">
+            <div id="${repo}">
                 <img src="${repo}/thumb.png" alt="">
                 <p>${descricao}</p>
             </div>

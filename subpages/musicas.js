@@ -72,19 +72,15 @@ let botaoAnterior = null
 let playlistAtual = null
 let musicaAtual = null
 function tocarSelecionada(botao, nomedamusica, origem,playlistDaMusica) {
-    if (botao==botaoAnterior) {
-        togglePlay(music,playBtn)
-        botao.innerHTML = playBtn.innerHTML
-    } else{
-        const caminhodamusica = "musicas/"+nomedamusica
-        const descText = `${formatarNomeMusica(caminhodamusica)} - <i>${origem}</i>`
-        mudarMusica(music, playBtn, ocultBtn, musicname, descText, caminhodamusica)
+    const caminhodamusica = "musicas/"+nomedamusica
+    const descText = `${formatarNomeMusica(caminhodamusica)} - <i>${origem}</i>`
+    mudarMusica(music, playBtn, ocultBtn, musicname, descText, caminhodamusica)
+    botao.innerHTML = ICON_STOP
 
-        botao.innerHTML = ICON_PAUSE
-        if (botaoAnterior) {
-            botaoAnterior.innerHTML = ICON_PLAY
-        }
+    if (botao!=botaoAnterior && botaoAnterior) {
+        botaoAnterior.innerHTML = ICON_PLAY
     }
+
     botaoAnterior=botao
     playlistAtual=playlistDaMusica
     musicaAtual=nomedamusica
@@ -108,7 +104,9 @@ for (const [playlistNome, musicas] of Object.entries(playlists)) {
     jukebox.innerHTML += `
         <div class="playlist">
             <h3>${playlistNome}</h3>
-            ${musicasHtml}
+            <div class="musicas">
+                ${musicasHtml}
+            </div>
         </div>
     `;
 }

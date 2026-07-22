@@ -73,18 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // Atualiza a barra de progresso conforme a música toca
 music.addEventListener("timeupdate", () => {
     if (music.duration) {
-        const percent = (music.currentTime / music.duration) * 100;
-        progressBar.style.width = `${percent}%`;
+        const percent = (music.currentTime / music.duration) * 100
+        progressBar.style.width = `${percent}%`
     }
-});
+})
 
 // Avança/retrocede a música ao clicar na barra de progresso
 progressContainer.addEventListener("click", (e) => {
-    const width = progressContainer.clientWidth;
-    const clickX = e.offsetX;
-    const duration = music.duration;
+    const width = progressContainer.clientWidth
+    const clickX = e.offsetX
+    const duration = music.duration
     
     if (duration) {
         music.currentTime = (clickX / width) * duration;
     }
-});
+})

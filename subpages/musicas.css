@@ -46,28 +46,41 @@ button{
 
 #jukebox{
     padding: 10px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 62px;
+    gap: 5vh;
+}
+
+/*#jukebox{
+    padding: 10px 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     column-gap: 5%;
     padding-bottom: 62px;
+}*/
+
+.playlist{
+    display: flex;
+    flex-direction: column;
+    width: min(500px, 100%);
 }
 
-h3{
+.playlist h3{
     font-weight: bold;
     font-size: x-large;
     text-align: center;
 }
 
-#playlist{
+.playlist .musicas{
     display: flex;
     flex-direction: column;
-    place-items: center;
 }
 
 .cadamusica{
     display: flex;
     flex-direction: row;
-    column-gap: 5%;
+    column-gap: 15px;
     justify-content: flex-start;
-    width: 100%;
 }

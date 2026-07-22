@@ -14,6 +14,10 @@
 /* Geral */
 /*********/
 
+*{
+    transition: all 0.2s ease-in-out;
+}
+
 body{
     background-color: var(--p1background);
     background-image: linear-gradient(var(--p1background)), url(../imgs/pag1.gif);
@@ -25,9 +29,12 @@ body{
     height: 100vh;
     overflow-y: auto;
     margin: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.titulo.Atividades{
+.titulo{
     text-align: center;
     font-weight: bold;
     background-color: var(--p1header);
@@ -44,24 +51,17 @@ a{
     text-decoration: none;
 }
 
-#home{
-    font-size: 60%;
-    margin-left: 30%;
-}
-
 /******************/
 /* Grid principal */
 /******************/
 
-#grid{
-    padding: 2%;
-    column-gap: 3%;
+grid{
+    padding: 2vw;
+    column-gap: 3vw;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     box-sizing: border-box;
-    height: auto;
-    padding-bottom: 20px;
 }
 
 .bloco{
@@ -74,7 +74,7 @@ a{
     color: var(--p1texto);
 }
 
-.subloco{
+.bloco div{
     display: flex;
     flex-direction: column;
     place-items: center;
@@ -85,18 +85,20 @@ a{
     padding: 15px;
     background-color: var(--p1caixas);
     font-size: 100%;
-    border-radius: 15px;
+    border-radius: 6px;
 }
 
-.subloco:hover{
+.bloco div:hover{
     transform: scale(1.1);
-    color: var(--p1caixas);
-    background-color: var(--p1texto);
 }
 
 
-img{
+.bloco img{
     width: 80%;
     aspect-ratio: 16/9;
     object-fit: contain;
+}
+
+.bloco p{
+    text-align: center;
 }
