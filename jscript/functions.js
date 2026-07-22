@@ -107,6 +107,7 @@ function mudarMusica(source, playBtn, ocultBtn, descElement, descText, caminhoda
 ---------------- Carregamento de iframes ----------------
 */
 
+// Função que vai fazer a animação do iframe surgindo
 function carregarIframe() {
     document.body.style.pointerEvents = "none"
     const locationHash = location.hash
@@ -143,6 +144,7 @@ function carregarIframe() {
     }, { once: true });
 }
 
+// Função que vai fazer a animação do iframe se recolocando na posição original
 function descarregarIframe() {
     const rect = rectDoIframe.getBoundingClientRect()
     document.body.style.pointerEvents = "none"

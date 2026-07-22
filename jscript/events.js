@@ -50,7 +50,9 @@ gridDiscover.addEventListener("click", (event) => {
     if (!item || !gridDiscover.contains(item)) return
     const iframeLink = item.querySelector("iframe").src
     iframeGeral.src = iframeLink
-    window.location.hash = item.id+".pag"
+    iframe.addEventListener("load", () => {
+        window.location.hash = item.id+".pag"
+    }, { once: true });
 })
 
 window.addEventListener("hashchange", () => {
