@@ -83,6 +83,7 @@ body{
 /**********************/
 
 #paglist{
+  margin-top: 5vh;
   font-weight: 300;
   font-size: larger;
   text-align: center;
