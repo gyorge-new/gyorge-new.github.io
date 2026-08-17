@@ -48,11 +48,6 @@ const playlists = {
         "Fighters_Game.mp3": "Magnific.com",
         "joyful-rhythm-walk-funk.mp3": "pixabay.com: lightbeatsmusic",
     },
-    "Meme shit": {
-        "Fabio e seus carros.mp3": "Origem? <s>Odio ao Fabio</s> Er... Inspiração",
-        "Fabio envenenado.mp3": "Origem? PH",
-        "Fabio e seus carros - alpha.mp3": "Origem? Ideia maluca"
-    },
 }
 
 
